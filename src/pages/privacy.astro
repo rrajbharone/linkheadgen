@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Privacy Policy | LinkHeadGen.com";
+const description = "Review the privacy policy for LinkHeadGen.com. We are committed to an offline-first, client-side approach with zero server tracking.";
+---
+
+<Layout title={title} description={description}>
+  <section class="section">
+    <div class="container">
+      <div class="seo-content-container">
+        <div class="card">
+          <h1 class="mb-4 text-center">Privacy Policy</h1>
+          <p class="text-center" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">
+            Effective Date: June 24, 2026
+          </p>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 2rem;" />
+
+          <p>
+            Your privacy is our primary concern. Because LinkHeadGen.com operates entirely inside your web browser, our data collection practices are minimal and transparent.
+          </p>
+
+          <h3>1. No Server-Side Storage</h3>
+          <p>
+            We do not host databases to record your profile inputs, job titles, or industries. When you click "Generate Headlines", the algorithms compute templates locally on your machine. No search histories, skills lists, or generated outputs are sent to our servers.
+          </p>
+
+          <h3>2. Local Storage Usage</h3>
+          <p>
+            Our tool uses your browser's <code>localStorage</code> cache to provide convenient features:
+          </p>
+          <ul>
+            <li><strong>Favorite Headlines:</strong> Saved when you click the heart icon.</li>
+            <li><strong>Search History:</strong> Stores the last 10 form configurations so you can reload them.</li>
+            <li><strong>Theme Preference:</strong> Remembers your light/dark mode selection.</li>
+          </ul>
+          <p>
+            You can clear all local storage cache at any time using your browser's developer tools or by clicking the clear buttons provided in the tool dashboard.
+          </p>
+
+          <h3>3. Cookies & Analytics</h3>
+          <p>
+            We do not use tracking pixels, session identifiers, or marketing cookies. If we deploy analytics (like Google Analytics) to monitor aggregate traffic, we anonymize IP addresses and restrict tracking to static page views.
+          </p>
+
+          <h3>4. Third-Party Websites</h3>
+          <p>
+            Our website contains links to other resources (such as LinkedIn). We have no control over the privacy policies of those external destinations and advise you to review their policies.
+          </p>
+
+          <h3>5. Contact Information</h3>
+          <p>
+            If you have questions about our offline-first architecture, please reach out to us via our <a href="/contact">Contact Page</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

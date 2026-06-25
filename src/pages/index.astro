@@ -1,0 +1,435 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { faqs } from '../utils/faqs';
+import { examplesData } from '../utils/examples';
+import { formulasData } from '../utils/formulas';
+
+// Page Title & Metadata
+const title = "Free LinkedIn Headline Generator | 20+ SaaS-Style Ideas - LinkHeadGen.com";
+const description = "Generate high-converting, recruiter-friendly LinkedIn headlines instantly. Built with 8 smart formulas. Offline-first, dark mode, character counts, and zero signup.";
+---
+
+<Layout title={title} description={description}>
+  <!-- 1. Hero Section -->
+  <section class="section hero">
+    <div class="container">
+      <div class="badge badge-primary mb-4">✨ Offline-first & 100% Free</div>
+      <h1>Generate Professional LinkedIn Headlines That Get More Profile Views</h1>
+      <p>Create recruiter-friendly, keyword-rich LinkedIn headlines in seconds using smart pattern-matching formulas.</p>
+      
+      <div class="hero-ctas">
+        <a href="#generator" class="btn btn-primary btn-lg" id="hero-cta-btn">Generate My Headline</a>
+        <a href="#formulas" class="btn btn-secondary btn-lg">View Formulas</a>
+      </div>
+
+      <div class="trust-indicators">
+        <div class="trust-badge-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          Free Forever
+        </div>
+        <div class="trust-badge-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          No Signup Required
+        </div>
+        <div class="trust-badge-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          Instant Results
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Main Generator Tool Section -->
+  <section class="section" id="generator" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="grid-2">
+        <!-- Generator Inputs Panel -->
+        <div class="card">
+          <h2 class="mb-4">Configure Your Profile Details</h2>
+          <form id="generator-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="job-title">Job Title / Current Role</label>
+              <input type="text" id="job-title" class="input-text" placeholder="e.g. Software Engineer, Sales Director" required />
+            </div>
+
+            <div class="form-group">
+              <label for="industry">Industry / Domain</label>
+              <input type="text" id="industry" class="input-text" placeholder="e.g. FinTech, SaaS, Healthcare" required />
+            </div>
+
+            <div class="form-group">
+              <label for="experience-level">Experience Level</label>
+              <select id="experience-level" class="input-select">
+                <option value="Student">Student (University / Learning)</option>
+                <option value="Fresher">Fresher (Entry-Level / Graduate)</option>
+                <option value="Junior">Junior (1-2 years experience)</option>
+                <option value="Mid-Level" selected>Mid-Level (3-5 years experience)</option>
+                <option value="Senior">Senior (5-8 years experience)</option>
+                <option value="Manager">Manager / Team Lead</option>
+                <option value="Director">Director / Head of Department</option>
+                <option value="Executive">Executive (VP, C-Suite, President)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="skills">Key Skills (Comma-separated, max 3)</label>
+              <input type="text" id="skills" class="input-text" placeholder="e.g. React, UI/UX, Agile Methodologies" required />
+            </div>
+
+            <div class="form-group">
+              <label for="target-audience">Target Audience (Who do you help?)</label>
+              <input type="text" id="target-audience" class="input-text" placeholder="e.g. B2B startups, tech companies, hiring managers" required />
+            </div>
+
+            <div class="form-group">
+              <label for="career-goal">Primary Career Goal</label>
+              <select id="career-goal" class="input-select">
+                <option value="Get Hired" selected>Get Hired (Showcase skills & availability)</option>
+                <option value="Attract Clients">Attract Clients (Showcase services & ROI)</option>
+                <option value="Build Authority">Build Authority (Showcase leadership & insights)</option>
+                <option value="Networking">Networking (Connect with like-minded peers)</option>
+                <option value="Personal Branding">Personal Branding (Share your industry journey)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="headline-style">Headline Tone / Style</label>
+              <select id="headline-style" class="input-select">
+                <option value="Professional" selected>Professional (Classic & balanced)</option>
+                <option value="Executive">Executive (Authortative & C-Suite focused)</option>
+                <option value="Recruiter Friendly">Recruiter Friendly (Highly searchable keywords)</option>
+                <option value="Personal Brand">Personal Brand (Growth & passion oriented)</option>
+                <option value="Achievement Based">Achievement Based (Data & metric driven)</option>
+                <option value="Founder Style">Founder Style (Business-building angle)</option>
+                <option value="Creative">Creative (Original, dynamic & bold)</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="generate-btn" class="btn btn-primary w-full">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Generate Headlines
+              </button>
+              <button type="button" id="clear-btn" class="btn btn-secondary w-full">Clear</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- 3. Live Preview & Output Panel -->
+        <div class="preview-container">
+          <!-- Live Preview mockup -->
+          <div class="linkedin-mock mb-8">
+            <div class="linkedin-header-bg"></div>
+            <div class="linkedin-avatar-container">
+              <div class="linkedin-avatar">
+                <!-- Fallback user icon -->
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="linkedin-info">
+              <h3>
+                <span id="preview-name">Alex Morgan</span>
+                <span class="linkedin-badge-gold" title="LinkedIn Premium Member">IN</span>
+              </h3>
+              <div class="linkedin-headline-preview" id="preview-headline">
+                Your high-converting headline will dynamically preview here as you modify fields and generate ideas.
+              </div>
+              <div class="linkedin-meta">
+                <span class="location" id="preview-location">Greater New York City Area</span>
+                <span class="connections" id="preview-connections">500+ connections</span>
+              </div>
+              <div class="linkedin-buttons">
+                <span class="linkedin-btn linkedin-btn-primary">Open to</span>
+                <span class="linkedin-btn linkedin-btn-secondary">Add profile section</span>
+                <span class="linkedin-btn linkedin-btn-secondary" style="flex: 0; min-width: 2.5rem; display: flex; align-items: center; justify-content: center;">...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated Outputs Tab Container -->
+          <div class="card" id="output-panel" style="min-height: 400px;">
+            <div class="gen-tabs">
+              <button class="gen-tab-btn active" id="tab-all" data-tab="all">All Ideas (20)</button>
+              <button class="gen-tab-btn" id="tab-favs" data-tab="favorites">Favorites (<span id="fav-count">0</span>)</button>
+              <button class="gen-tab-btn" id="tab-history" data-tab="history">Recent (0)</button>
+            </div>
+
+            <!-- All Headlines List -->
+            <div id="panel-all">
+              <div class="outputs-header">
+                <span class="char-counter" style="font-weight: 600;">Hover over any headline to preview in mockup</span>
+                <button class="btn btn-secondary btn-sm" id="copy-all-btn">Copy All</button>
+              </div>
+              <div class="headline-list" id="headlines-results">
+                <!-- Seed placeholder state before generation -->
+                <div class="empty-state">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364.364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                  <h3>Ready to Stand Out?</h3>
+                  <p class="mt-4">Fill out the profile details on the left and click <strong>Generate Headlines</strong> to build 20 professional ideas instantly.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorites List -->
+            <div id="panel-favorites" style="display: none;">
+              <div class="outputs-header">
+                <span class="char-counter">Saved Headlines</span>
+                <button class="btn btn-secondary btn-sm" id="clear-favs-btn" style="display: none;">Clear Favorites</button>
+              </div>
+              <div class="headline-list" id="favorites-results">
+                <div class="empty-state">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                  <p>No favorites saved yet. Click the heart icon next to any generated headline to save them here.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- History List -->
+            <div id="panel-history" style="display: none;">
+              <div class="outputs-header">
+                <span class="char-counter">Recent Searches</span>
+                <button class="btn btn-secondary btn-sm" id="clear-history-btn" style="display: none;">Clear History</button>
+              </div>
+              <div class="headline-list" id="history-results">
+                <div class="empty-state">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <p>Your generation history is empty. Newly generated sets will show up here.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Popular Examples Section -->
+  <section class="section" id="examples" style="background-color: var(--bg-primary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="text-center mb-8">
+        <h2>Popular LinkedIn Headline Examples</h2>
+        <p class="mt-4">See how industry professionals frame their headlines. Select an industry role to view optimized headlines.</p>
+      </div>
+
+      <!-- Tabs navigation for 11 roles -->
+      <div class="examples-tabs">
+        {Object.keys(examplesData).map((key, idx) => (
+          <button 
+            class={`example-tab-btn ${idx === 0 ? 'active' : ''}`} 
+            data-role={key}
+            id={`tab-example-${key}`}
+          >
+            {examplesData[key][0].role}
+          </button>
+        ))}
+      </div>
+
+      <!-- Examples grid wrapper -->
+      <div class="examples-grid" id="examples-results-container">
+        <!-- Will be dynamically populated by client script. Fallback rendering the first item's list for SEO and noscript -->
+        {examplesData["software-engineer"].map((item) => (
+          <div class="example-headline-card">
+            <div class="example-headline-text">"{item.headline}"</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+              <span class="example-headline-role">{item.role}</span>
+              <button class="btn btn-secondary btn-sm copy-example-btn" data-text={item.headline}>Copy</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Headline Formula Library Section -->
+  <section class="section" id="formulas">
+    <div class="container">
+      <div class="text-center">
+        <h2>Proven LinkedIn Headline Formula Library</h2>
+        <p class="mt-4">High-impact profile views are built on frameworks. Tap into our structured, recruiter-trusted libraries.</p>
+      </div>
+
+      <div class="formulas-grid">
+        {formulasData.map((formula) => (
+          <div class="formula-card">
+            <span class="formula-tag">{formula.tag}</span>
+            <h3 class="formula-title">{formula.name}</h3>
+            <p class="formula-description">{formula.description}</p>
+            <div class="formula-structure">{formula.structure}</div>
+            <div class="formula-example">
+              <strong>Example:</strong> "{formula.example}"
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. LinkedIn Tips Section -->
+  <section class="section" id="tips" style="background-color: var(--bg-primary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="text-center mb-8">
+        <h2>Expert LinkedIn Headline Optimization Tips</h2>
+        <p class="mt-4">Simple adjustments that can increase your search appearance statistics and recruiter response rates by 2x.</p>
+      </div>
+
+      <div class="formulas-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="formula-card">
+          <span class="formula-tag" style="background-color: var(--error-light); color: var(--error);">Rule #1</span>
+          <h3 class="formula-title">Respect the Character Limits</h3>
+          <p class="formula-description">The maximum length is 220 characters. However, on mobile devices, only the first 60–80 characters are visible in feed comments and searches. Keep your most important title and core value proposition at the very beginning.</p>
+        </div>
+
+        <div class="formula-card">
+          <span class="formula-tag" style="background-color: var(--success-light); color: var(--success);">Rule #2</span>
+          <h3 class="formula-title">Pack with High-Intent Keywords</h3>
+          <p class="formula-description">LinkedIn operates like a search engine for recruiters. Optimize your search visibility by inserting accurate industry keywords (like React, B2B SaaS, Agile) instead of filler jargon (like 'innovative visionary').</p>
+        </div>
+
+        <div class="formula-card">
+          <span class="formula-tag" style="background-color: var(--primary-light); color: var(--primary);">Rule #3</span>
+          <h3 class="formula-title">Position for the Next Job</h3>
+          <p class="formula-description">Write your headline targeting the position you want to get, not just the one you currently hold. Use prefixes like 'Senior' or 'Lead' if you are qualified, or 'Aspiring' if you are a student transitioning fields.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 2000+ Words SEO Content Section -->
+  <section class="section" id="seo-deepdive" style="border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="seo-content-container">
+        <h2>The Ultimate Guide to Writing a LinkedIn Headline that Converts</h2>
+        <p>Your LinkedIn profile is your personal digital landing page. In the professional world, first impressions are formed in microseconds, and the first element someone reads—even before clicking your profile—is your <strong>LinkedIn headline</strong>. In this definitive guide, we will unpack the science and art of crafting LinkedIn headlines that generate inbound job opportunities, attract high-paying clients, and establish industry authority.</p>
+
+        <h3>What is a LinkedIn Headline?</h3>
+        <p>A LinkedIn headline is the short section of text directly below your name on your profile. By default, LinkedIn automatically populates this with your current job title and employer (e.g., "Software Engineer at TechCorp"). However, leaving your headline on this default setting is a massive missed opportunity. Your headline is highly dynamic: it travels with you everywhere on the platform—appearing next to your name in the home feed, search results, connection lists, groups, and message folders.</p>
+
+        <h3>Why Your LinkedIn Headline Matters (The SEO Angle)</h3>
+        <p>LinkedIn operates a complex, proprietary search algorithm used by hundreds of thousands of recruiters and hiring managers globally. When a recruiter types "Python Developer" or "Content Writer" into their LinkedIn Recruiter dashboard, the system indexes profiles based on relevance and authority. <strong>The headline carries the highest SEO keyword weight of any section on your profile.</strong></p>
+        <p>If your headline contains exact-match keywords that align with search intent, you will index significantly higher. Conversely, if your headline consists solely of creative metaphors (e.g., "Digital Wizard making ideas spark"), recruiters seeking a "Digital Marketing Specialist" will never find you. Your search appearances will fall, and your inbox will remain empty.</p>
+
+        <blockquote>
+          "A great LinkedIn headline is 50% search engine optimization (SEO) to get found, and 50% copywriting to get clicked."
+        </blockquote>
+
+        <h3>Proven Formulas for Different Career Trajectories</h3>
+        <p>Different career milestones require different brand positioning. Here is how you should structure your headline based on your professional goals:</p>
+        
+        <h4>1. The Job Seeker (Recruiter-Optimized Formula)</h4>
+        <p>If your immediate goal is to land a new corporate role, prioritize searchability. Emphasize your exact target job titles and technical toolsets. Recruiters search for hard skills. Use the pipe separator ( | ) or bullet points ( • ) to make it scannable.</p>
+        <p><strong>Example:</strong> <em>Senior Frontend Engineer | React, TypeScript, Next.js | Seeking Opportunities in Fintech</em></p>
+
+        <h4>2. The Freelancer / Agency Owner (Client-Attraction Formula)</h4>
+        <p>Clients do not hire freelancers for their job titles; they hire them to solve business problems and increase revenue. Focus your headline on the specific target audience you serve and the business outcome (ROI) you deliver.</p>
+        <p><strong>Example:</strong> <em>I help B2B Software Startups generate 3x more demo requests through SEO copywriting and landing page design.</em></p>
+
+        <h4>3. The Founder / Executive (Authority-Building Formula)</h4>
+        <p>As a business builder or senior leader, your headline should reflect organizational scale, sector innovation, and thought leadership. Mention your company, your key leadership focus, and any notable advisory or speaking achievements.</p>
+        <p><strong>Example:</strong> <em>Founder & CEO @ HealthStream | Scaling AI-driven diagnostics tools | Techstars Alum & Board Member</em></p>
+
+        <h3>5 Common LinkedIn Headline Mistakes to Avoid</h3>
+        <ol>
+          <li><strong>Using the default setting:</strong> Simply letting LinkedIn write "Job Title at Company" is boring and fails to communicate your unique value proposition.</li>
+          <li><strong>Exceeding the character limit:</strong> While the limit is 220 characters, the most critical hook must occur in the first 80 characters, or it will be cut off on mobile views.</li>
+          <li><strong>Using confusing corporate jargon:</strong> Avoid words like 'ninja', 'rockstar', 'guru', or 'maven'. Recruiters never search for 'Java Rockstar'—they search for 'Java Developer'.</li>
+          <li><strong>Sounding desperate:</strong> Avoid using 'Actively seeking opportunities' as the *entire* headline. It tells recruiters nothing about your skills. Instead, state your role and skills first, then add 'Seeking new roles' at the end.</li>
+          <li><strong>Zero keywords:</strong> A headline without core skills (like SQL, Copywriting, SaaS) prevents LinkedIn's crawler from categorizing your profile correctly.</li>
+        </ol>
+
+        <h3>Actionable Checklist to Audit Your LinkedIn Headline</h3>
+        <p>Before saving your new headline, run it through this quick checklist to ensure maximum impact:</p>
+        <ul>
+          <li>Does the headline start with your target job title (first 60 characters)?</li>
+          <li>Does it contain at least 3 high-volume search keywords relevant to your industry?</li>
+          <li>Is the character count under 220? (Check using the LinkHeadGen.com active counter).</li>
+          <li>Does it clearly describe who you help or what business value you deliver?</li>
+          <li>Have you removed all generic corporate buzzwords?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ Section (Accordion) -->
+  <section class="section" id="faq" style="background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="text-center">
+        <h2>Frequently Asked Questions</h2>
+        <p class="mt-4">Everything you need to know about LinkedIn headlines, character counts, and profile search optimization.</p>
+      </div>
+
+      <div class="faq-accordion">
+        {faqs.map((faq, idx) => (
+          <div class="faq-item" id={`faq-item-${idx}`}>
+            <button class="faq-trigger" aria-expanded="false" aria-controls={`faq-answer-${idx}`}>
+              {faq.question}
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="faq-content" id={`faq-answer-${idx}`}>
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Related Tools Section -->
+  <section class="section" id="related-tools">
+    <div class="container">
+      <div class="text-center">
+        <h2>Explore More LinkedIn Optimization Tools</h2>
+        <p class="mt-4">Complimentary generators to optimize every single section of your professional LinkedIn profile.</p>
+      </div>
+
+      <div class="related-grid">
+        <!-- Tool 1 -->
+        <div class="related-card">
+          <div class="related-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="related-title">Summary Generator</h3>
+          <p class="related-desc">Draft hook-driven LinkedIn summaries that encourage recruiters to read your experience.</p>
+          <span class="related-badge">Coming Soon</span>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="related-card">
+          <div class="related-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <h3 class="related-title">About Generator</h3>
+          <p class="related-desc">Create story-driven bio sections detailing your professional journey and career wins.</p>
+          <span class="related-badge">Coming Soon</span>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="related-card">
+          <div class="related-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.3 0 2.5.5 3.4 1.4m-3.4-1.4c-.9.9-2.1 1.4-3.4 1.4"/></svg>
+          </div>
+          <h3 class="related-title">Bio Generator</h3>
+          <p class="related-desc">Generate optimized micro-bios perfect for other social platforms and resumes.</p>
+          <span class="related-badge">Coming Soon</span>
+        </div>
+
+        <!-- Tool 4 -->
+        <div class="related-card">
+          <div class="related-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h3 class="related-title">Post Generator</h3>
+          <p class="related-desc">Generate viral, high-engagement posts and hooks to increase your daily feed reach.</p>
+          <span class="related-badge">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Client scripts loader -->
+<script src="../scripts/app.ts"></script>

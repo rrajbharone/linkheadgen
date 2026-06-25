@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "About Us | LinkedIn Headline Generator - LinkHeadGen.com";
+const description = "Learn about the mission behind LinkHeadGen.com: building private, offline-first, high-converting LinkedIn headlines with zero server calls.";
+---
+
+<Layout title={title} description={description}>
+  <section class="section">
+    <div class="container">
+      <div class="seo-content-container">
+        <div class="card">
+          <h1 class="mb-4 text-center">About LinkHeadGen.com</h1>
+          <p class="text-center" style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">
+            Empowering professionals with private, high-converting personal branding tools.
+          </p>
+          
+          <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 2rem;" />
+
+          <h3>Our Mission</h3>
+          <p>
+            At LinkHeadGen.com, we believe that professional opportunities should be unlocked through smart positioning, not complex algorithms. Your LinkedIn headline is the single most critical piece of digital real estate on your professional profile. 
+          </p>
+          <p>
+            Our mission is simple: to help software engineers, product managers, creators, freelancers, founders, and students craft recruiter-friendly, keyword-rich headlines in seconds, absolutely free.
+          </p>
+
+          <h3>Why We Built This Tool</h3>
+          <p>
+            Most modern headline generators require you to register, submit your email address, purchase credits, or upload your data to remote servers. We wanted to build a SaaS-grade utility that operates with <strong>complete respect for user privacy</strong>. 
+          </p>
+          <p>
+            By designing this generator to compile templates and synonyms entirely client-side, we ensure your professional inputs never leave your device.
+          </p>
+
+          <h3>Key Features of LinkHeadGen.com</h3>
+          <ul>
+            <li><strong>No Account Required:</strong> No signups, no cookies, no email forms. Open and generate.</li>
+            <li><strong>8 Copywriting Frameworks:</strong> Leverages proven templates (e.g., Achievement-driven, Recruiter-focused, Founder-branding).</li>
+            <li><strong>LinkedIn-Safe Counter:</strong> Every output features character tracking to guarantee it fits within LinkedIn's 220-character limit.</li>
+            <li><strong>Favorites & History:</strong> Save the ideas you like and reload past configurations instantly from your browser's local cache.</li>
+          </ul>
+
+          <div style="text-align: center; margin-top: 3rem;">
+            <a href="/#generator" class="btn btn-primary">Start Generating Headlines</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

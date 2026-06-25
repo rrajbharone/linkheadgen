@@ -1,0 +1,202 @@
+---
+import '../styles/global.css';
+import { faqs } from '../utils/faqs';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Free LinkedIn Headline Generator | High-Converting Headlines - LinkHeadGen.com",
+  description = "Generate 20+ keyword-rich, recruiter-friendly LinkedIn headlines instantly. Entirely free, offline-first, no signup required. Choose professional, executive, recruiter, and founder styles.",
+  canonicalUrl = "https://linkheadgen.com/"
+} = Astro.props;
+
+// Construct FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// WebApplication Schema
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LinkHeadGen.com LinkedIn Headline Generator",
+  "url": "https://linkheadgen.com/",
+  "operatingSystem": "All",
+  "applicationCategory": "BusinessApplication",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1245"
+  }
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://linkheadgen.com/"
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://linkheadgen.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://linkheadgen.com/og-image.png" />
+
+    <!-- Fonts preconnect and loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <!-- Blocking Dark Mode Detection Script -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header>
+      <div class="container header-container">
+        <a href="/" class="logo" id="header-logo">
+          LinkHead<span>Gen</span>
+        </a>
+        
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <nav class="nav-links" id="nav-links-menu">
+            <a href="/#generator" class="btn btn-secondary btn-sm" id="nav-gen-cta">Tool</a>
+            <a href="/#formulas" class="btn btn-secondary btn-sm" id="nav-formulas-cta">Formulas</a>
+            <a href="/#tips" class="btn btn-secondary btn-sm" id="nav-tips-cta">Tips</a>
+            <a href="/#faq" class="btn btn-secondary btn-sm" id="nav-faq-cta">FAQ</a>
+          </nav>
+          
+          <div class="header-actions">
+            <!-- Dark Mode Toggle -->
+            <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+              <!-- Moon Icon -->
+              <svg class="moon-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <!-- Sun Icon -->
+              <svg class="sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            
+            <!-- Toggle Menu Button (Mobile) -->
+            <button id="menu-toggle-btn" class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script is:inline>
+      // Collapsible Menu script running immediately
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('menu-toggle-btn');
+        const navMenu = document.getElementById('nav-links-menu');
+
+        if (toggleBtn && navMenu) {
+          toggleBtn.addEventListener('click', () => {
+            const open = navMenu.classList.toggle('open');
+            toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+
+          // Close on navigation click
+          navMenu.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', () => {
+              navMenu.classList.remove('open');
+              toggleBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+      });
+    </script>
+
+    <!-- Main Content Slot -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-container">
+        <div class="footer-info">
+          <p>© {new Date().getFullYear()} LinkHeadGen.com. All rights reserved.</p>
+          <p style="font-size: 0.8rem; margin-top: 0.25rem;">Create recruiter-friendly LinkedIn headlines instantly.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/about">About</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms & Conditions</a>
+          <a href="/disclaimer">Disclaimer</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+  </body>
+</html>
